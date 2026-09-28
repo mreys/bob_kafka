@@ -1,0 +1,25 @@
+{
+  "name": "kafka-demo",
+  "version": "1.0.0",
+  "description": "Secure Kafka demo environment with JSON & Avro Node.js producers and consumer",
+  "main": "src/consumers/order-consumer.js",
+  "scripts": {
+    "start:kafka": "docker compose up -d",
+    "stop:kafka": "docker compose down",
+    "generate:certs": "./scripts/generate-certs.sh",
+    "produce:json": "node src/producers/json-producer.js",
+    "produce:avro": "node src/producers/avro-producer.js",
+    "consume": "node src/consumers/order-consumer.js",
+    "test": "node test/unit-test.js",
+    "test:e2e": "node test/e2e-test.js"
+  },
+  "keywords": ["kafka", "avro", "json", "sasl_ssl", "kafkajs"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "avsc": "^5.7.7",
+    "csv-parse": "^5.5.6",
+    "dotenv": "^16.4.5",
+    "kafkajs": "^2.2.4"
+  }
+}

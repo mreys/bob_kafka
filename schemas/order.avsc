@@ -1,0 +1,11 @@
+{
+  "type": "record",
+  "name": "OrderEvent",
+  "namespace": "com.demo.orders",
+  "fields": [
+    { "name": "customerid", "type": "string" },
+    { "name": "productid", "type": "string" },
+    { "name": "quantity", "type": "int" },
+    { "name": "shopid", "type": "string" }
+  ]
+}
