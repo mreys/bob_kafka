@@ -10,19 +10,19 @@ The project demonstrates two Node.js event producers emitting order transactions
 
 ```mermaid
 flowchart LR
-    CSV[(data/orders.csv\nTimed Test Data)] --> P1[JSON Producer\nnode src/producers/json-producer.js]
-    CSV --> P2[Avro Producer\nnode src/producers/avro-producer.js]
-    SCHEMA[schemas/order.avsc] -.-> P2
+    CSV[(data/orders.csv<br/>Timed Test Data)] --> P1["JSON Producer<br/>node src/producers/json-producer.js"]
+    CSV --> P2["Avro Producer<br/>node src/producers/avro-producer.js"]
+    SCHEMA["schemas/order.avsc"] -.-> P2
 
-    subgraph Kafka [Kafka Container (KRaft Mode)]
-        T1[(Topic: orders-json)]
-        T2[(Topic: orders-avro)]
+    subgraph Kafka ["Kafka Container (KRaft Mode)"]
+        T1[("Topic: orders-json")]
+        T2[("Topic: orders-avro")]
     end
 
     P1 -- "SASL_SSL:9093 (JSON)" --> T1
     P2 -- "SASL_SSL:9093 (Avro binary)" --> T2
 
-    T1 -- "SASL_SSL" --> C[Order Consumer\nnode src/consumers/order-consumer.js]
+    T1 -- "SASL_SSL" --> C["Order Consumer<br/>node src/consumers/order-consumer.js"]
     T2 -- "SASL_SSL" --> C
     SCHEMA -.-> C
 ```
